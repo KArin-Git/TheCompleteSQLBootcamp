@@ -1,0 +1,91 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 COUNT\
+syntax:\
+	SELECT COUNT(name) FROM table\
+\
+return number of the rows in the table\
+\
+WHERE\
+syntax:\
+	SELECT column1, column2\
+	FROM table\
+	WHERE condition\
+		Comparison operator\
+			=\
+			>\
+			<\
+			>=\
+			<=\
+			<> OR !=\
+		Logical operator\
+			AND\
+			OR\
+			NOT\
+\
+ORDER BY\
+syntax:\
+	ORDER BY column1, column2 ASC / DESC\
+		ASC 		>> Low to High (by default)\
+		DESC 	>> High to low\
+		** ASC and DESC will be assign to each column separately **\
+			example:\
+				ORDER BY column1 ASC, column2 DESC\
+\
+LIMIT\
+** always be at the END of a query **\
+** print the number of row we limit from the top to number of row **\
+syntax:\
+	LIMIT number of row\
+			example:\
+				SELECT * FROM payment\
+				ORDER BY payment_date ASC\
+				LIMIT 5;\
+					** print everything from the LOWEST payment_date to row number 5 **\
+				SELECT * FROM payment\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 				ORDER BY payment_date DESC\
+				LIMIT 5;\
+					** print everything from the HIGHEST payment_date to row number 5 **\
+\
+BETWEEN >> numeric\
+syntax:\
+	WHERE value BETWEEN low AND high\
+		** value >= low AND value <= high ** (inclusive)\
+	WHERE value NOT BETWEEN low AND high\
+		** value < low OR value > high **\
+		** CAN combine BETWEEN with NOT logical operator **\
+*** be careful when dealing with the time stamp\
+\
+IN >> numeric and string\
+syntax:\
+	WHERE value IN (option1, option2, \'85, option_n)\
+	WHERE value NOT IN (option1, option2, \'85, option_n)\
+			example:\
+				SELECT colour FROM table\
+				WHERE colour IN (\'91red\'92, \'91blue\'92)\
+					** WHERE colour = \'91red\'92 OR colour = \'91blue\'92\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 				SELECT colour FROM table\
+				WHERE colour NOT IN (\'91red\'92, \'91blue\'92)\
+					** WHERE colour != \'91red\'92 OR colour != \'91blue\'92\
+\
+LIKE and ILIKE >> using pattern matching string data\
+syntax:\
+	WHERE name LIKE \'91A%\'92 OR name LIKE \'91a%\'92\
+	WHERE name NOT LIKE \'91A%\'92 OR name NOT LIKE \'91a%\'92\
+		** LIKE case-sensitive **\
+	WHERE name ILIKE \'91a%\'92\
+	WHERE name NOT ILIKE \'91a%\'92\
+		** ILIKE case-INSENSITIVE **\
+wildcard:\
+1. Percent (%)\
+	matching any sequence of characters > from ZERO to INFINITY\
+2. Underscore (_)\
+	matching any single character\
+}
